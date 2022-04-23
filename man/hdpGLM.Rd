@@ -2,7 +2,7 @@
 % Please edit documentation in R/src_main.R
 \name{hdpGLM}
 \alias{hdpGLM}
-\title{Hierarchical Dirichlet Process GLM}
+\title{Fit Hierarchical Dirichlet Process GLM}
 \usage{
 hdpGLM(
   formula1,
@@ -58,7 +58,7 @@ and \code{alpha}, which must be a single number. If @param family is 'gaussian',
 then it must also contain \code{s2_sigma} and \code{df_sigma}, both
 single numbers. If NULL, the defaults are \code{mu_beta=0},
 \code{Sigma_beta=diag(10)}, \code{alpha=1}, \code{df_sigma=10},
-\code{d2_sigma=10} (all with the dimension automatically set to the
+\code{s2_sigma=10} (all with the dimension automatically set to the
 correct values).}
 
 \item{family}{a character with either 'gaussian', 'binomial', or 'multinomial'.

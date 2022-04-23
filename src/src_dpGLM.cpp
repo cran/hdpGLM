@@ -44,14 +44,14 @@ void dpGLM_display_message(String family, int burn_in, int n_iter, int iter, int
   Rcpp::Rcout << std::endl;
   Rcpp::Rcout << "Iteration: " << iter+1 << std::endl;
   Rcpp::Rcout << std::endl;
-  Rcpp::Rcout << "Acceptance rate for beta         : " << dpGLM_ACCEPTANCE_COUNT/dpGLM_MCMC_TRIAL  << std::endl;
-  Rcpp::Rcout << "Average acceptance rate for beta : " << dpGLM_ACCEPTANCE_RATE_AVERAGE << std::endl;
+  Rcpp::Rcout << "Acceptance Rate for beta         : " << dpGLM_ACCEPTANCE_COUNT/dpGLM_MCMC_TRIAL  << std::endl;
+  Rcpp::Rcout << "Average Acceptance Rate for beta : " << dpGLM_ACCEPTANCE_RATE_AVERAGE << std::endl;
   Rcpp::Rcout << std::endl;
-  Rcpp::Rcout << "Maximum Number of cluster allowed (K): " << K << std::endl;
-  Rcpp::Rcout << "Maximum Number of cluster activated  : " << max_active_cluster_at_a_iter  << std::endl;
-  Rcpp::Rcout << "Current number of active clusters    : " << active_clusters_at_iter  << std::endl;
+  Rcpp::Rcout << "Maximum Number of Clusters Allowed (K): " << K << std::endl;
+  Rcpp::Rcout << "Maximum Number of Clusters Activated  : " << max_active_cluster_at_a_iter  << std::endl;
+  Rcpp::Rcout << "Current Number of Active Clusters     : " << active_clusters_at_iter  << std::endl;
   Rcpp::Rcout << std::endl;
-  Rcpp::Rcout << "Percentage of data classified in each clusters k at current iteraction (displaying only clusters with more than 5% of the data)" << std::endl;
+  Rcpp::Rcout << "Percentage of data classified in each cluster k at current iteraction (displaying only clusters with more than 5% of the data)" << std::endl;
   Rcpp::Rcout << A_subset.t() << std::endl;
   
 }
@@ -84,6 +84,7 @@ arma::mat dpGLM_get_theta_active(arma::mat theta, arma::colvec Z)
 
 
 // {{{ constants and inits }}}
+
 
 arma::mat dpGLM_get_inits(int K,int d, String family, List fix)
 {
@@ -191,13 +192,13 @@ List dpGLM_mcmc(arma::colvec y, arma::mat X, arma::colvec weights, int K, List f
 	  // resize
       samples.resize(samples.n_rows + theta_new.n_rows, samples.n_cols);
       samples_pi.resize(samples_pi.n_rows + 1, K);
-	  // store samples
+      // store samples
       for(int i = 0; i < theta_new.n_rows; i++){
-		samples.row(samples.n_rows - theta_new.n_rows +i) = theta_new.row(i);
+	samples.row(samples.n_rows - theta_new.n_rows +i) = theta_new.row(i);
       }
-	  samples_pi.row(samples_pi.n_rows - 1) = pi.t();
+      samples_pi.row(samples_pi.n_rows - 1) = pi.t();
     }
-
+    
     // update countZik and pik
     // -----------------------
     countZik = dpGLM_update_countZik(countZik, Z);

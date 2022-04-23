@@ -3,6 +3,9 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom magrittr %>%
 #' @importFrom Hmisc wtd.quantile
+#' @importFrom stats median
+#' @importFrom stats sd
+#' @importFrom utils head
 NULL
  
 
@@ -52,7 +55,7 @@ NULL
             results$residuals <- y - offset
         }
     } else {
-        x <- stats::model.matrix(mt1, reg.matrix, stats::contrasts)
+        x <- stats::model.matrix(mt1, reg.matrix)
     }
     return(list(y=y, X=x, w=w))
 }
@@ -76,11 +79,15 @@ NULL
 ## -------------------
 .onAttach<- function(libname, pkgname)
 {
-    packageStartupMessage('
-## =======================================================================
-##    Hierarchial Dirichlet Process Generalized Linear Model (hdpGLM)
-## =======================================================================
-')
+    packageStartupMessage(paste0('
+## ===============================================================
+## Hierarchial Dirichlet Process Generalized Linear Model (hdpGLM)
+## ===============================================================
+
+Author: Diogo Ferrari
+Usage : http://www.diogoferrari.com/hdpGLM/index.html
+
+'))
 }
 .onUnload <- function (libpath)
 {
@@ -165,6 +172,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c(".",
                                                         "Parameter.label",
                                                         "beta.label",
                                                         "value",
+                                                        "nclusters",
                                                         "tau.label",
                                                         "w.label",
                                                         "beta.exp",
