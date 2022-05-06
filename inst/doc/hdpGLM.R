@@ -25,7 +25,7 @@ mod = hdpGLM(support ~ inequality + income + ideology, data=welfare,
 summary(mod)
 
 ## -----------------------------------------------------------------------------
-welfare_clustered = hdpGLM_classify(welfare, mod)
+welfare_clustered = classify(welfare, mod)
 head(welfare_clustered)
 tail(welfare_clustered)
 

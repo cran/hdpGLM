@@ -1,4 +1,5 @@
 
+
 ## * tidy summary
 
 #' Tidy summary
@@ -164,6 +165,33 @@ summary_hdpGLM <- function(object, ...)
     return(list(beta=betas, tau=taus))
 }
 
+#' nclusters
+#'
+#' This function returns the number of clusters found in the estimation
+#'
+#' @param object a \code{dpGLM} object returned by the function \code{hdpGLM}
+#'
+#' @export
+nclusters <- function(object)
+{
+    if (methods::is(object,'dpGLM')) {
+        nclusters=length(unique(summary_tidy(object)$k))
+    }
+    if (methods::is(object, 'hdpGLM')) {
+        res = (
+            summary_tidy(object)$beta
+            %>% dplyr::group_by(j)
+            %>% dplyr::summarise(nclusters=length(unique(k))) 
+            %>% dplyr::rename(Context=j) 
+            %>% as.data.frame
+        )
+        nclusters=res$nclusters
+        names(nclusters)= paste('Context', res$Context)
+    }
+    cat('\n')
+    return(nclusters)
+}
+
 ## * Methods
 ## ** summary
 
@@ -197,7 +225,7 @@ summary.dpGLM <- function(object, ...)
         cat("\n")
         stmp = (
             s
-            %>% dplyr::filter(k==k[i])
+            %>% dplyr::filter(k==!!k[i])
             %>% dplyr::select(` `="term",
                               `Post.Mean`="Mean",
                               `Post.Median`="Median",
@@ -947,6 +975,7 @@ print.hdpGLM <- function(x, ...)
     cat(" \n")
     invisible()
 }
+
 ## ** coef
 
 
@@ -1064,10 +1093,22 @@ mcmc_info.hdpGLM = function(x, ...)
 #' @param samples the output of \code{\link{hdpGLM}} 
 #'
 #' @export
-hdpGLM_classify <- function(data, samples)
+classify <- function(data, samples)
 {
     cluster = apply(samples$pik, 1, which.max)
     return(data.frame(Cluster = cluster, data))
+}
+
+#' Deprecated
+#'
+#' @param data a data frame with the data set used to estimate the \code{\link{hdpGLM}} model
+#' @param samples the output of \code{\link{hdpGLM}}
+#' 
+#' @export
+hdpGLM_classify <- function(data, samples)
+{
+    cat("\n\nNote: use classify(). hdpGLM_classify() will be removed in future versions.\n\n")
+    return(classify(data, samples))
 }
 
 
