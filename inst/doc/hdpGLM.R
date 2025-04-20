@@ -1,4 +1,4 @@
-## ---- include = FALSE---------------------------------------------------------
+## ----include = FALSE----------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -12,7 +12,7 @@ head(welfare)
 ## ----setup--------------------------------------------------------------------
 library(hdpGLM)
 
-## ---- results='hide'----------------------------------------------------------
+## ----results='hide'-----------------------------------------------------------
 ## estimating the model
 mcmc = list(burn.in=10, ## MCMC burn-in period
             n.iter =500) ## number of MCMC iterations to keep
@@ -29,7 +29,7 @@ welfare_clustered = classify(welfare, mod)
 head(welfare_clustered)
 tail(welfare_clustered)
 
-## ---- fig.width=7.2, fig.height=5---------------------------------------------
+## ----fig.width=7.2, fig.height=5----------------------------------------------
 plot(mod, separate=T, ncols=4)
 
 ## -----------------------------------------------------------------------------
@@ -38,7 +38,7 @@ welfare = read.csv2('welfare2.csv')
 head(welfare)
 tail(welfare)
 
-## ---- results='hide'----------------------------------------------------------
+## ----results='hide'-----------------------------------------------------------
 ## estimating the model
 mcmc = list(burn.in=1, ## MCMC burn-in period
             n.iter =50) ## number of MCMC iterations to keep
@@ -49,9 +49,9 @@ mod = hdpGLM(support ~ inequality + income + ideology,
 ## -----------------------------------------------------------------------------
 summary(mod)
 
-## ---- fig.width=7.2, fig.height=7---------------------------------------------
+## ----fig.width=7.2, fig.height=7----------------------------------------------
 plot_tau(mod)
 
-## ---- fig.width=7.2, fig.height=5---------------------------------------------
+## ----fig.width=7.2, fig.height=5----------------------------------------------
 plot_pexp_beta(mod, smooth.line=TRUE, ncol.beta=2)
 

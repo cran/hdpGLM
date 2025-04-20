@@ -1,7 +1,7 @@
-bd8a3cc68d3aee940dfebd5c7f240625 *DESCRIPTION
+e35f8f9fc6e424b96c6bc04d539cab65 *DESCRIPTION
 c7bc73be5078cf2a663c37513d7b976d *LICENSE
 47036758401559aa3aaf4835a32ba67d *NAMESPACE
-fd6980971c2b785c71e574ca415dd568 *NEWS.md
+1916a76c703c283353285e1ede2f4093 *NEWS.md
 1d0ef834f2d2e922dbf3c7d3b23df827 *R/RcppExports.R
 8cfe2795b598c429a2043c779306b67c *R/hdpGLM_data.R
 f8d8527d06180a05d6ae514a66ffecf5 *R/hdpGLM_package.R
@@ -11,13 +11,13 @@ a0f87930c43fca8d017efa1f5aa59b04 *R/src_r_version.R
 6f7ea5e6dfb08578ba35ff44d8a672af *R/src_summaries.R
 199590f33264224a0e63b83b8a566e03 *R/src_utils.R
 61216f9887094eb3e01eb09b78fd0a17 *README.md
-daa19d1ff33f9ad764f49cdb3a50a276 *build/vignette.rds
+32e79b7ed7461b5b270786645021d83c *build/vignette.rds
 8ed76f07da65deba1ae460a16f148d4d *data/welfare.rda
 be7a704ba1419fe6584219a32f253827 *data/welfare2.rda
 a0de443714aa0912b9cd5332074c691e *inst/CITATION
-cdd21143dd5a1a8a0da7074437a78338 *inst/doc/hdpGLM.R
+2af0c05035045aaaec5cc4ca98a2251f *inst/doc/hdpGLM.R
 7c4bd008f1176275e05b031308f97bc2 *inst/doc/hdpGLM.Rmd
-399cc67137ffd8bd882a2dd09d3777cd *inst/doc/hdpGLM.html
+554fcd8358db1860b057166535f07799 *inst/doc/hdpGLM.html
 5898226f2e3156e1e869000bcb62678a *man/classify.Rd
 23481b20878dfc4c6f1a098a9d460a95 *man/coef.dpGLM.Rd
 6a0a2c73dc6eda108d022d10276688ef *man/coef.hdpGLM.Rd
